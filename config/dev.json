@@ -1,0 +1,4 @@
+{
+    "MONGODB": "mongodb+srv://root:root@cluster0.59zko.mongodb.net/sm?retryWrites=true&w=majority",
+    "SECRET_KEY": "some very secret key"  
+}
