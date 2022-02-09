@@ -18,6 +18,12 @@ const userSchema = new Schema({
         trim: true,
         required: true
     },
+    teams: [{
+        type: Schema.ObjectId,
+        ref: 'Team',
+        required: false,
+        unique: true
+    }],
     createdAt: {
         type: Date,
         default: Date.now

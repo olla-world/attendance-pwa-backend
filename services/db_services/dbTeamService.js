@@ -1,4 +1,6 @@
 const Team = require('./models/Team');
+const User = require('./models/User');
+
 const { findBy } = require('./../../utils/findByConditions');
 
 const create = async function (req) {
@@ -25,16 +27,27 @@ const updateMemberList = async function (params, body) {
     const { teamId } = params;
     const { userId, action } = body;
 
-    const arrayAction = action === 'remove'?
+    const arrayActionTeam = action === 'remove'?
         { $pull: { "members": userId } }
         : { $addToSet: { "members": userId } }
+    
+    const arrayActionUser = action === 'remove'?
+        { $pull: { "teams": teamId } }
+        : { $addToSet: { "teams": teamId } }
 
     const team = Team
         .findByIdAndUpdate(
             teamId,
-            arrayAction,
+            arrayActionTeam,
             { new: true, useFindAndModify: false }
         ).then(team => team);
+    
+    const user = User
+        .findByIdAndUpdate(
+            userId,
+            arrayActionUser,
+            { new: true, useFindAndModify: false }
+        ).then(user=>user)
     
     return team;
 }

@@ -5,7 +5,8 @@ const getUser = async function (query) {
     let { email } = query;
 
     const allUsers = User
-        .find({"email": findBy(email)})
+        .find({ "email": findBy(email) })
+        .populate('teams')
         .then(users => users)
         .catch(err => console.log(err));
     

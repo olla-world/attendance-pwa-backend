@@ -11,7 +11,7 @@ const register = async function (req) {
 const signIn = async function (req) {
     return User.findOne({
         email: req.email
-    })
+    }).populate('teams');
 }
 
 module.exports = {
