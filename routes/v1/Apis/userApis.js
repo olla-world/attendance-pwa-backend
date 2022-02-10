@@ -13,6 +13,18 @@ const getUser = async function (req, res, next) {
     }
 }
 
+const getUserTeam = async function (req, res, next) {
+    try {
+        const team = await userService.initiateGetUserTeam(req);
+        res.json(team);
+    } catch (err) {
+        next(err);
+    }
+}
+
 router.get('/', loginRequired, getUser);
+
+//user teams 
+router.get('/team/:userId', loginRequired, getUserTeam);
 
 module.exports = router;

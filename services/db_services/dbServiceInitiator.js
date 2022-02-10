@@ -6,6 +6,10 @@ async function getUser(req) {
     return await dbUserService.getUser(req);
 }
 
+async function getUserTeam(query) {
+    return await dbUserService.getUserTeam(query);
+}
+
 async function register(req) {
     return await dbAuthService.register(req);
 }
@@ -37,5 +41,6 @@ module.exports = {
     createTeam,
     getTeams,
     addMemberTeam,
-    updateMemberListTeam
+    updateMemberListTeam,
+    getUserTeam
 }

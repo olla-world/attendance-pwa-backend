@@ -1,11 +1,16 @@
 const dbService = require('./db_services/dbServiceInitiator');
 
 const initiateGetUser = async function (req) {
-    const users = await dbService.getUser(req.query);
+    const user = await dbService.getUser(req.query);
 
-    return users
+    return user;
+}
+
+const initiateGetUserTeam = async function (req) {
+    const team = await dbService.getUserTeam(req.query)
 }
 
 module.exports = {
-    initiateGetUser
+    initiateGetUser,
+    initiateGetUserTeam
 }

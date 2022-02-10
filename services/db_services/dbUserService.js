@@ -13,6 +13,19 @@ const getUser = async function (query) {
     return allUsers;
 }
 
+const getUserTeam = async function (query) {
+    let { email } = query;
+
+    const teams = User
+        .find({ "email": findBy(email) })
+        .select('teams')
+        .then(teams => teams)
+        .catch(err => console.log(err));
+    
+    return teams;
+}
+
 module.exports = {
-    getUser
+    getUser,
+    getUserTeam
 }
