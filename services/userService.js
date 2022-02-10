@@ -7,7 +7,9 @@ const initiateGetUser = async function (req) {
 }
 
 const initiateGetUserTeam = async function (req) {
-    const team = await dbService.getUserTeam(req.query)
+    const team = await dbService.getUserTeam(req.params);
+
+    return team;
 }
 
 module.exports = {

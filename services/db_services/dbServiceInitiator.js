@@ -6,8 +6,8 @@ async function getUser(req) {
     return await dbUserService.getUser(req);
 }
 
-async function getUserTeam(query) {
-    return await dbUserService.getUserTeam(query);
+async function getUserTeam(params) {
+    return await dbUserService.getUserTeam(params);
 }
 
 async function register(req) {

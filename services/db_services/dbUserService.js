@@ -13,11 +13,11 @@ const getUser = async function (query) {
     return allUsers;
 }
 
-const getUserTeam = async function (query) {
-    let { email } = query;
+const getUserTeam = async function (params) {
+    let { userId } = params;
 
     const teams = User
-        .find({ "email": findBy(email) })
+        .findById(userId)
         .select('teams')
         .then(teams => teams)
         .catch(err => console.log(err));
