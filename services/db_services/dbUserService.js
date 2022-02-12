@@ -19,8 +19,6 @@ const getUserTeam = async function (params) {
     const teams = User
         .findById(userId)
         .select('teams')
-        .populate('members')
-        .populate('admin')
         .then(teams => teams)
         .catch(err => console.log(err));
     
