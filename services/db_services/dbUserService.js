@@ -1,4 +1,6 @@
 const User = require('./models/User');
+const Team = require('./models/Team');
+
 const { findBy } = require('./../../utils/findByConditions');
 
 const getUser = async function (query) {
@@ -19,7 +21,13 @@ const getUserTeam = async function (params) {
     const teams = User
         .findById(userId)
         .select('teams')
-        .populate('teams')
+        .populate({
+            path: 'teams',
+            populate:{
+                path:'admin',
+                model: User
+            }
+        })
         .populate('teams.admin')
         .then(teams => teams)
         .catch(err => console.log(err));
