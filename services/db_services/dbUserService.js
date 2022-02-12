@@ -26,6 +26,9 @@ const getUserTeam = async function (params) {
             populate:{
                 path:'admin',
                 model: User
+            },populate:{
+                path:'members',
+                model: User
             }
         })
         .populate('teams.admin')
